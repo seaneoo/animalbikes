@@ -7,9 +7,11 @@ import net.minecraft.entity.MovementType;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec2f;
@@ -31,6 +33,16 @@ public class AbstractBikeEntity extends PathAwareEntity {
     protected void initGoals() {
         goalSelector.add(1, new LookAtEntityGoal(this, PlayerEntity.class, 6f));
         goalSelector.add(2, new LookAroundGoal(this));
+    }
+
+    @Override
+    public boolean canBeHitByProjectile() {
+        return false;
+    }
+
+    @Override
+    public boolean damage(ServerWorld world, DamageSource source, float amount) {
+        return false;
     }
 
     @Override
