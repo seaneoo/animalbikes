@@ -116,3 +116,4 @@ gradle-app.setting
 ### Minecraft ###
 run/*
 .idea/runConfigurations/*
+src/main/generated/*
