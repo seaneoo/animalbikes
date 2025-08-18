@@ -15,6 +15,7 @@ public class ABEnglishLangProvider extends FabricLanguageProvider {
 
     @Override
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+        translationBuilder.add("itemGroup.animalbikes", "Animal Bikes");
         translationBuilder.add(ABItems.CREEPER_BIKE, "Creeper Bike");
     }
 }
