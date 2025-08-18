@@ -22,7 +22,10 @@ loom {
 
 fabricApi { configureDataGeneration { client = true } }
 
-repositories {}
+repositories {
+    maven { url = uri("https://maven.isxander.dev/releases") }
+    maven { url = uri("https://maven.terraformersmc.com/") }
+}
 
 dependencies {
     minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
@@ -30,6 +33,8 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${project.property("loader_version")}")
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
+    modImplementation("dev.isxander:yet-another-config-lib:${project.property("yacl_version")}")
+    modImplementation("com.terraformersmc:modmenu:${project.property("modmenu_version")}")
 }
 
 tasks.processResources {
@@ -37,6 +42,9 @@ tasks.processResources {
     inputs.property("minecraft_version", project.property("minecraft_version"))
     inputs.property("loader_version", project.property("loader_version"))
     inputs.property("fabric_version", project.property("fabric_version"))
+    inputs.property("fabric_version", project.property("fabric_version"))
+    inputs.property("yacl_version", project.property("yacl_version"))
+    inputs.property("modmenu_version", project.property("modmenu_version"))
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
@@ -45,6 +53,8 @@ tasks.processResources {
             "minecraft_version" to project.property("minecraft_version"),
             "loader_version" to project.property("loader_version"),
             "fabric_version" to project.property("fabric_version"),
+            "yacl_version" to project.property("yacl_version"),
+            "modmenu_version" to project.property("modmenu_version"),
         )
     }
 }
