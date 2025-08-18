@@ -3,6 +3,8 @@ package dev.seano.animalbikes.items;
 import dev.seano.animalbikes.AnimalBikes;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
@@ -11,11 +13,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 
-import java.util.function.Function;
+import java.util.function.BiFunction;
 
 public class ABItems {
 
-    public static final Item CREEPER_BIKE = register("creeper_bike", Item::new, new Item.Settings().maxCount(1));
+    public static final Item CREEPER_BIKE = register("creeper_bike", EntityType.CREEPER, AnimalBikeItem::new);
 
     public static final RegistryKey<ItemGroup> AB_ITEM_GROUP = registerItemGroup("animal_bikes", CREEPER_BIKE);
 
@@ -27,9 +29,9 @@ public class ABItems {
         return RegistryKey.of(RegistryKeys.ITEM, AnimalBikes.identifier(id));
     }
 
-    private static Item register(String name, Function<Item.Settings, Item> factory, Item.Settings settings) {
+    private static Item register(String name, EntityType<? extends MobEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends MobEntity>, Item> factory) {
         RegistryKey<Item> key = keyOf(name);
-        Item item = factory.apply(settings.registryKey(key));
+        Item item = factory.apply(key, entityType);
         return Registry.register(Registries.ITEM, key, item);
     }
 
