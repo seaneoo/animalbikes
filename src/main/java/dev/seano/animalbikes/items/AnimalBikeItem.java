@@ -10,7 +10,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 
 public class AnimalBikeItem extends Item {
@@ -29,13 +28,12 @@ public class AnimalBikeItem extends Item {
             return ActionResult.SUCCESS;
         }
 
-        Item item = context.getStack().getItem();
-
         PlayerEntity player = context.getPlayer();
         if (player != null) {
-            player.sendMessage(Text.empty()
-                    .append("used animal bike: ").append(Text.translatable(item.getTranslationKey()))
-                    .formatted(Formatting.GRAY), false);
+            context.getStack().decrementUnlessCreative(1, player);
+            // todo change this message and move to a translation key
+            player.sendMessage(Text.empty().append("Sneak right click with an empty hand to reacquire the wheel."),
+                    true);
         }
 
         entityType.spawn((ServerWorld) world, context.getBlockPos().up(), SpawnReason.MOB_SUMMONED);

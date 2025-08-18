@@ -1,5 +1,6 @@
 package dev.seano.animalbikes.entities;
 
+import dev.seano.animalbikes.items.ABItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MovementType;
@@ -8,6 +9,7 @@ import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec2f;
@@ -36,10 +38,16 @@ public class BikeEntity extends PathAwareEntity {
         if (getWorld().isClient) {
             return ActionResult.SUCCESS;
         }
-        if (!hasPassengers() && !player.shouldCancelInteraction()) {
-            player.setYaw(getYaw());
-            player.setPitch(getPitch());
-            player.startRiding(this);
+        if (!hasPassengers()) {
+            if (player.isSneaking()) {
+                discard();
+                ItemStack itemStack = ABItems.ENTITY_ANIMAL_BIKE_ITEM_MAP.get(getType()).getDefaultStack();
+                player.giveItemStack(itemStack);
+            } else {
+                player.setYaw(getYaw());
+                player.setPitch(getPitch());
+                player.startRiding(this);
+            }
         }
         return ActionResult.SUCCESS;
     }

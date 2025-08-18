@@ -14,14 +14,21 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 
+import java.util.Map;
 import java.util.function.BiFunction;
 
 public class ABItems {
 
-    public static final Item CREEPER_BIKE = register("creeper_bike", ABEntities.CREEPER_BIKE, AnimalBikeItem::new);
-    public static final Item PIG_BIKE = register("pig_bike", ABEntities.PIG_BIKE, AnimalBikeItem::new);
+    public static final AnimalBikeItem CREEPER_BIKE = register("creeper_bike",
+            ABEntities.CREEPER_BIKE,
+            AnimalBikeItem::new);
+    public static final AnimalBikeItem PIG_BIKE = register("pig_bike", ABEntities.PIG_BIKE, AnimalBikeItem::new);
 
     public static final RegistryKey<ItemGroup> AB_ITEM_GROUP = registerItemGroup("animal_bikes", CREEPER_BIKE);
+
+    public static final Map<EntityType<? extends BikeEntity>, AnimalBikeItem> ENTITY_ANIMAL_BIKE_ITEM_MAP = Map.ofEntries(
+            Map.entry(ABEntities.CREEPER_BIKE, CREEPER_BIKE),
+            Map.entry(ABEntities.PIG_BIKE, PIG_BIKE));
 
     public static void init() {
         ItemGroupEvents.modifyEntriesEvent(AB_ITEM_GROUP).register(entries -> {
@@ -34,10 +41,10 @@ public class ABItems {
         return RegistryKey.of(RegistryKeys.ITEM, AnimalBikes.identifier(id));
     }
 
-    private static Item register(String name, EntityType<? extends BikeEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends BikeEntity>, Item> factory) {
+    private static AnimalBikeItem register(String name, EntityType<? extends BikeEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends BikeEntity>, Item> factory) {
         RegistryKey<Item> key = keyOf(name);
         Item item = factory.apply(key, entityType);
-        return Registry.register(Registries.ITEM, key, item);
+        return (AnimalBikeItem) Registry.register(Registries.ITEM, key, item);
     }
 
     @SuppressWarnings("SameParameterValue")
