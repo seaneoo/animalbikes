@@ -26,20 +26,8 @@ public class ABRecipeProvider extends FabricRecipeProvider {
             public void generate() {
                 //noinspection unused
                 RegistryWrapper.Impl<Item> itemImpl = registries.getOrThrow(RegistryKeys.ITEM);
-                createShaped(RecipeCategory.TOOLS, ABItems.CREEPER_BIKE, 1).input('x', Items.TNT)
-                        .input('y', Items.SADDLE)
-                        .pattern("xxx")
-                        .pattern("xyx")
-                        .pattern("xxx")
-                        .criterion(hasItem(Items.TNT), conditionsFromItem(Items.TNT))
-                        .offerTo(exporter);
-                createShaped(RecipeCategory.TOOLS, ABItems.PIG_BIKE, 1).input('x', Items.PORKCHOP)
-                        .input('y', Items.SADDLE)
-                        .pattern("xxx")
-                        .pattern("xyx")
-                        .pattern("xxx")
-                        .criterion(hasItem(Items.PORKCHOP), conditionsFromItem(Items.PORKCHOP))
-                        .offerTo(exporter);
+                createBikeRecipe(this, recipeExporter, ABItems.CREEPER_BIKE, Items.TNT);
+                createBikeRecipe(this, recipeExporter, ABItems.PIG_BIKE, Items.PORKCHOP);
             }
         };
     }
@@ -47,5 +35,15 @@ public class ABRecipeProvider extends FabricRecipeProvider {
     @Override
     public String getName() {
         return ABModelProvider.class.getSimpleName();
+    }
+
+    private void createBikeRecipe(RecipeGenerator generator, RecipeExporter recipeExporter, Item animalBikeItem, Item item) {
+        generator.createShaped(RecipeCategory.TOOLS, animalBikeItem, 1).input('x', item)
+                .input('y', Items.SADDLE)
+                .pattern("xxx")
+                .pattern("xyx")
+                .pattern("xxx")
+                .criterion(RecipeGenerator.hasItem(item), generator.conditionsFromItem(item))
+                .offerTo(recipeExporter);
     }
 }
