@@ -2,7 +2,7 @@ package dev.seano.animalbikes.items;
 
 import dev.seano.animalbikes.AnimalBikes;
 import dev.seano.animalbikes.entities.ABEntities;
-import dev.seano.animalbikes.entities.BikeEntity;
+import dev.seano.animalbikes.entities.AbstractBikeEntity;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.EntityType;
@@ -26,7 +26,7 @@ public class ABItems {
 
     public static final RegistryKey<ItemGroup> AB_ITEM_GROUP = registerItemGroup("animal_bikes", CREEPER_BIKE);
 
-    public static final Map<EntityType<? extends BikeEntity>, AnimalBikeItem> ENTITY_ANIMAL_BIKE_ITEM_MAP = Map.ofEntries(
+    public static final Map<EntityType<? extends AbstractBikeEntity>, AnimalBikeItem> ENTITY_ANIMAL_BIKE_ITEM_MAP = Map.ofEntries(
             Map.entry(ABEntities.CREEPER_BIKE, CREEPER_BIKE),
             Map.entry(ABEntities.PIG_BIKE, PIG_BIKE));
 
@@ -41,7 +41,7 @@ public class ABItems {
         return RegistryKey.of(RegistryKeys.ITEM, AnimalBikes.identifier(id));
     }
 
-    private static AnimalBikeItem register(String name, EntityType<? extends BikeEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends BikeEntity>, Item> factory) {
+    private static AnimalBikeItem register(String name, EntityType<? extends AbstractBikeEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends AbstractBikeEntity>, Item> factory) {
         RegistryKey<Item> key = keyOf(name);
         Item item = factory.apply(key, entityType);
         return (AnimalBikeItem) Registry.register(Registries.ITEM, key, item);

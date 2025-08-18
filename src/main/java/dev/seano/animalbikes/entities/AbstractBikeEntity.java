@@ -17,9 +17,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class BikeEntity extends PathAwareEntity {
+public class AbstractBikeEntity extends PathAwareEntity {
 
-    public BikeEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
+    public AbstractBikeEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
     }
 

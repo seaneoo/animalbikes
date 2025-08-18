@@ -1,6 +1,6 @@
 package dev.seano.animalbikes.items;
 
-import dev.seano.animalbikes.entities.BikeEntity;
+import dev.seano.animalbikes.entities.AbstractBikeEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,9 +14,9 @@ import net.minecraft.world.World;
 
 public class AnimalBikeItem extends Item {
 
-    private final EntityType<? extends BikeEntity> entityType;
+    private final EntityType<? extends AbstractBikeEntity> entityType;
 
-    public AnimalBikeItem(RegistryKey<Item> registryKey, EntityType<? extends BikeEntity> entityType) {
+    public AnimalBikeItem(RegistryKey<Item> registryKey, EntityType<? extends AbstractBikeEntity> entityType) {
         super(new Item.Settings().maxCount(1).registryKey(registryKey));
         this.entityType = entityType;
     }

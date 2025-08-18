@@ -7,7 +7,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class PigBikeEntity extends BikeEntity {
+public class PigBikeEntity extends AbstractBikeEntity {
 
     public PigBikeEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);

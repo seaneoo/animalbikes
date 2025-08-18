@@ -7,7 +7,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class CreeperBikeEntity extends BikeEntity {
+public class CreeperBikeEntity extends AbstractBikeEntity {
 
     public CreeperBikeEntity(EntityType<? extends PathAwareEntity> entityType, World world) {
         super(entityType, world);
