@@ -17,9 +17,14 @@ public class ABEntities {
             CreeperBikeEntity::new,
             0.6f,
             1.75f);
+    public static final EntityType<PigBikeEntity> PIG_BIKE = register("pig_bike",
+            PigBikeEntity::new,
+            0.9f,
+            0.9f);
 
     public static void init() {
         FabricDefaultAttributeRegistry.register(CREEPER_BIKE, BikeEntity.createBikeAttributes());
+        FabricDefaultAttributeRegistry.register(PIG_BIKE, BikeEntity.createBikeAttributes());
     }
 
     private static RegistryKey<EntityType<?>> keyOf(String id) {

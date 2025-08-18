@@ -20,5 +20,6 @@ public class ABEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ABItems.CREEPER_BIKE, "Creeper Bike");
         translationBuilder.add(ABEntities.CREEPER_BIKE, "Creeper Bike");
         translationBuilder.add(ABItems.PIG_BIKE, "Pig Bike");
+        translationBuilder.add(ABEntities.PIG_BIKE, "Pig Bike");
     }
 }

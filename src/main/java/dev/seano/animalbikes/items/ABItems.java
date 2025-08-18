@@ -19,7 +19,7 @@ import java.util.function.BiFunction;
 public class ABItems {
 
     public static final Item CREEPER_BIKE = register("creeper_bike", ABEntities.CREEPER_BIKE, AnimalBikeItem::new);
-    public static final Item PIG_BIKE = register("pig_bike", ABEntities.CREEPER_BIKE, AnimalBikeItem::new);
+    public static final Item PIG_BIKE = register("pig_bike", ABEntities.PIG_BIKE, AnimalBikeItem::new);
 
     public static final RegistryKey<ItemGroup> AB_ITEM_GROUP = registerItemGroup("animal_bikes", CREEPER_BIKE);
 
