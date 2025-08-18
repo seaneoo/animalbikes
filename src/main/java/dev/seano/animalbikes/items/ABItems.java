@@ -18,11 +18,15 @@ import java.util.function.BiFunction;
 public class ABItems {
 
     public static final Item CREEPER_BIKE = register("creeper_bike", EntityType.CREEPER, AnimalBikeItem::new);
+    public static final Item PIG_BIKE = register("pig_bike", EntityType.PIG, AnimalBikeItem::new);
 
     public static final RegistryKey<ItemGroup> AB_ITEM_GROUP = registerItemGroup("animal_bikes", CREEPER_BIKE);
 
     public static void init() {
-        ItemGroupEvents.modifyEntriesEvent(AB_ITEM_GROUP).register(entries -> entries.add(CREEPER_BIKE));
+        ItemGroupEvents.modifyEntriesEvent(AB_ITEM_GROUP).register(entries -> {
+            entries.add(CREEPER_BIKE);
+            entries.add(PIG_BIKE);
+        });
     }
 
     private static RegistryKey<Item> keyOf(String id) {

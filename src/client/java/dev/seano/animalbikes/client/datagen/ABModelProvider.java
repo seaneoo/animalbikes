@@ -21,5 +21,6 @@ public class ABModelProvider extends FabricModelProvider {
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ABItems.CREEPER_BIKE, Models.GENERATED);
+        itemModelGenerator.register(ABItems.PIG_BIKE, Models.GENERATED);
     }
 }

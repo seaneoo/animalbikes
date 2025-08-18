@@ -33,6 +33,13 @@ public class ABRecipeProvider extends FabricRecipeProvider {
                         .pattern("xxx")
                         .criterion(hasItem(Items.TNT), conditionsFromItem(Items.TNT))
                         .offerTo(exporter);
+                createShaped(RecipeCategory.TOOLS, ABItems.PIG_BIKE, 1).input('x', Items.PORKCHOP)
+                        .input('y', Items.SADDLE)
+                        .pattern("xxx")
+                        .pattern("xyx")
+                        .pattern("xxx")
+                        .criterion(hasItem(Items.PORKCHOP), conditionsFromItem(Items.PORKCHOP))
+                        .offerTo(exporter);
             }
         };
     }
