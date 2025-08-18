@@ -1,0 +1,20 @@
+package dev.seano.animalbikes;
+
+import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class AnimalBikes implements ModInitializer {
+
+    public static final String ID = "animalbikes";
+    public static final Logger LOGGER = LoggerFactory.getLogger(AnimalBikes.class);
+
+    public static Identifier identifier(String path) {
+        return Identifier.of(ID, path);
+    }
+
+    @Override
+    public void onInitialize() {
+    }
+}

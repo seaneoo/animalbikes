@@ -1,0 +1,53 @@
+{
+    "schemaVersion": 1,
+    "id": "animalbikes",
+    "version": "${version}",
+    "name": "Animal Bikes",
+    "description": "",
+    "authors": [
+        {
+            "name": "seano",
+            "contact": {
+                "email": "me@seano.dev",
+                "homepage": "https://github.com/seaneoo"
+            }
+        },
+        {
+            "name": "Noppes",
+            "contact": {
+                "homepage": "https://www.kodevelopment.nl/minecraft/"
+            }
+        }
+    ],
+    "contact": {
+        "homepage": "https://github.com/seaneoo/animalbikes/wiki",
+        "sources": "https://github.com/seaneoo/animalbikes",
+        "issues": "https://github.com/seaneoo/animalbikes/issues"
+    },
+    "license": "CC BY-NC 3.0",
+    "icon": "animalbikes-icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "fabric-datagen": [
+            "dev.seano.animalbikes.client.AnimalBikesDataGenerator"
+        ],
+        "client": [
+            "dev.seano.animalbikes.client.AnimalBikesClient"
+        ],
+        "main": [
+            "dev.seano.animalbikes.AnimalBikes"
+        ]
+    },
+    "mixins": [
+        "animalbikes.mixins.json",
+        {
+            "config": "animalbikes.client.mixins.json",
+            "environment": "client"
+        }
+    ],
+    "depends": {
+        "minecraft": ">=${minecraft_version}",
+        "fabricloader": ">=${loader_version}",
+        "fabric": ">=${fabric_version}"
+    }
+}
