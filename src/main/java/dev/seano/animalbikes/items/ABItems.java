@@ -1,10 +1,11 @@
 package dev.seano.animalbikes.items;
 
 import dev.seano.animalbikes.AnimalBikes;
+import dev.seano.animalbikes.entities.ABEntities;
+import dev.seano.animalbikes.entities.BikeEntity;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
@@ -17,8 +18,8 @@ import java.util.function.BiFunction;
 
 public class ABItems {
 
-    public static final Item CREEPER_BIKE = register("creeper_bike", EntityType.CREEPER, AnimalBikeItem::new);
-    public static final Item PIG_BIKE = register("pig_bike", EntityType.PIG, AnimalBikeItem::new);
+    public static final Item CREEPER_BIKE = register("creeper_bike", ABEntities.CREEPER_BIKE, AnimalBikeItem::new);
+    public static final Item PIG_BIKE = register("pig_bike", ABEntities.CREEPER_BIKE, AnimalBikeItem::new);
 
     public static final RegistryKey<ItemGroup> AB_ITEM_GROUP = registerItemGroup("animal_bikes", CREEPER_BIKE);
 
@@ -33,7 +34,7 @@ public class ABItems {
         return RegistryKey.of(RegistryKeys.ITEM, AnimalBikes.identifier(id));
     }
 
-    private static Item register(String name, EntityType<? extends MobEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends MobEntity>, Item> factory) {
+    private static Item register(String name, EntityType<? extends BikeEntity> entityType, BiFunction<RegistryKey<Item>, EntityType<? extends BikeEntity>, Item> factory) {
         RegistryKey<Item> key = keyOf(name);
         Item item = factory.apply(key, entityType);
         return Registry.register(Registries.ITEM, key, item);

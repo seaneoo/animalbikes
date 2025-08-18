@@ -1,5 +1,6 @@
 package dev.seano.animalbikes;
 
+import dev.seano.animalbikes.entities.ABEntities;
 import dev.seano.animalbikes.items.ABItems;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
@@ -17,6 +18,7 @@ public class AnimalBikes implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        ABEntities.init();
         ABItems.init();
     }
 }

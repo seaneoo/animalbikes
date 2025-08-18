@@ -1,6 +1,10 @@
 package dev.seano.animalbikes.client;
 
+import dev.seano.animalbikes.client.entity.ABModelLayers;
+import dev.seano.animalbikes.client.entity.render.CreeperBikeEntityRenderer;
+import dev.seano.animalbikes.entities.ABEntities;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,5 +14,7 @@ public class AnimalBikesClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        EntityRendererRegistry.register(ABEntities.CREEPER_BIKE, CreeperBikeEntityRenderer::new);
+        ABModelLayers.init();
     }
 }

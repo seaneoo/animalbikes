@@ -1,5 +1,6 @@
 package dev.seano.animalbikes.client.datagen;
 
+import dev.seano.animalbikes.entities.ABEntities;
 import dev.seano.animalbikes.items.ABItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
@@ -17,6 +18,7 @@ public class ABEnglishLangProvider extends FabricLanguageProvider {
     public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
         translationBuilder.add("itemGroup.animalbikes", "Animal Bikes");
         translationBuilder.add(ABItems.CREEPER_BIKE, "Creeper Bike");
+        translationBuilder.add(ABEntities.CREEPER_BIKE, "Creeper Bike");
         translationBuilder.add(ABItems.PIG_BIKE, "Pig Bike");
     }
 }
