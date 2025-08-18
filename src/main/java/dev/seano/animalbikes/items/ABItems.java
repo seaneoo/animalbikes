@@ -38,7 +38,6 @@ public class ABItems {
     @SuppressWarnings("SameParameterValue")
     private static RegistryKey<ItemGroup> registerItemGroup(String name, Item item) {
         RegistryKey<ItemGroup> key = RegistryKey.of(RegistryKeys.ITEM_GROUP, AnimalBikes.identifier(name));
-        //noinspection NoTranslation
         ItemGroup itemGroup = FabricItemGroup.builder()
                 .icon(item::getDefaultStack)
                 .displayName(Text.translatable("itemGroup.animalbikes"))
