@@ -21,5 +21,7 @@ public class ABEnglishLangProvider extends FabricLanguageProvider {
         translationBuilder.add(ABEntities.CREEPER_BIKE, "Creeper Bike");
         translationBuilder.add(ABItems.PIG_BIKE, "Pig Bike");
         translationBuilder.add(ABEntities.PIG_BIKE, "Pig Bike");
+        translationBuilder.add("animalbikes.reclaimWheel",
+                "Press %1$s and %2$s with an empty hand to reclaim the wheel");
     }
 }
